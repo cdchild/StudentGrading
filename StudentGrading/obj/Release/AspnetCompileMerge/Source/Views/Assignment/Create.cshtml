@@ -1,0 +1,142 @@
+﻿@model StudentGrading.ViewModels.AddAssignmentViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Assignment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sectionId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("sectionId", String.Empty)
+                @Html.ValidationMessageFor(model => model.sectionId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rubricId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("rubricId", String.Empty)
+                @Html.ActionLink("Edit List", "Index", "Rubric")
+                @Html.ValidationMessageFor(model => model.rubricId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dueDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Date
+                @Html.EditorFor(model => model.dueDate)
+                @Html.ValidationMessageFor(model => model.dueDate)
+            </div>
+            <br />
+            <div class="col-md-10">
+                Time
+                @Html.EditorFor(model => model.dueTime)
+                @Html.ValidationMessageFor(model => model.dueTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingStart, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Date
+                @Html.EditorFor(model => model.gradingStart)
+                @Html.ValidationMessageFor(model => model.gradingStart)
+            </div>
+            <br />
+            <div class="col-md-10">
+                Time
+                @Html.EditorFor(model => model.gradingStartTime)
+                @Html.ValidationMessageFor(model => model.gradingStartTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingEnd, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Date
+                @Html.EditorFor(model => model.gradingEnd)
+                @Html.ValidationMessageFor(model => model.gradingEnd)
+            </div>
+            <br />
+            <div class="col-md-10">
+                Time
+                @Html.EditorFor(model => model.gradingEndTime)
+                @Html.ValidationMessageFor(model => model.gradingEndTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description)
+                @Html.ValidationMessageFor(model => model.description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ptsPossible, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ptsPossible)
+                @Html.ValidationMessageFor(model => model.ptsPossible)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.studentGraderVisible, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.studentGraderVisible)
+                @Html.ValidationMessageFor(model => model.studentGraderVisible)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.allowGraderOverride, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.allowGraderOverride)
+                @Html.ValidationMessageFor(model => model.allowGraderOverride)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.allowComments, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.allowComments)
+                @Html.ValidationMessageFor(model => model.allowComments)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

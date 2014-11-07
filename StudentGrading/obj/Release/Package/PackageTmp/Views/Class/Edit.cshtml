@@ -1,0 +1,133 @@
+﻿@model StudentGrading.Models.Section
+
+@{
+    ViewBag.Title = "Edit Class Section";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Section</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.courseId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("courseId", String.Empty)
+                @Html.ActionLink("Edit List", "Index", "Course")
+                @Html.ValidationMessageFor(model => model.courseId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.code)
+                @Html.ValidationMessageFor(model => model.code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.begin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.begin, new { @class = "datepicker" })
+                @Html.ValidationMessageFor(model => model.begin)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.end, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.end, new { @class = "datepicker" })
+                @Html.ValidationMessageFor(model => model.end)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+    <h4>Section Registrations</h4>
+    <hr />
+    <p>Current Registrations   |   @Html.ActionLink("Advanced View/Edit", "SIndex", "Registration", new { id = Model.id }, new { @target = "_blank" } )</p>
+    
+    <div class="col col-lg-offset-1">
+        <table class="table table-responsive table-condensed">
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.Registrations.First().roleId, new { @class = "control-label col-md-2" })
+                </th>
+                <th>
+                    @Html.LabelFor(model => model.Registrations.First().userId, new { @class = "control-label col-md-2" })
+                </th>
+                <th>@Html.LabelFor(model => model.Registrations.First().begin, new { @class = "control-label col-md-2" })</th>
+                <th>@Html.LabelFor(model => model.Registrations.First().end, new { @class = "control-label col-md-2" })</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownList("roleId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.Registrations.First().roleId)
+                </td>
+                <td>
+                    @Html.DropDownList("userId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.Registrations.First().userId)
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="submit" value="Register" formaction="@Url.Action("AddExisting")" class="btn btn-default" />
+                </td>
+            </tr>
+        @if (Model.Registrations.Count > 0)
+        {
+            foreach (var item in Model.Registrations)
+            {
+                string label;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(entry => item.role.Name, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.user.dispFull, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.begin, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.end, new { form = "form2" })
+                    </td>
+                    @if (DateTime.Today < item.end)
+                    { label = "End"; }
+                    else
+                    { label = "Remove"; }
+                    <td>
+                        <input type="submit" value="@label" formaction="@Url.Action("Remove", new { i = item.id, id = item.sectionId })" class="btn btn-default" />
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </table>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

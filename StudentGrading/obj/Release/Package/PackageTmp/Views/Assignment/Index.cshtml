@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StudentGrading.Models.Assignment>
+
+@{
+    ViewBag.Title = "Assignments";
+}
+
+<h2>Assignments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.courseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rubricId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ptsPossible)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course.dispShortWithTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rubric.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ptsPossible)
+        </td>
+        <td class="">
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-info btn-xs" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-xs" }) |
+            @Html.ActionLink("View Sections", "Index", "SectionAssignment", new { id = item.id }, new { @class = "btn btn-info btn-xs" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-info btn-xs" })
+        </td>
+    </tr>
+}
+
+</table>

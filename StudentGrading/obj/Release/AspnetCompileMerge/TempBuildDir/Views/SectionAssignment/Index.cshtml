@@ -1,0 +1,57 @@
+﻿@model IEnumerable<StudentGrading.Models.SectionAssignment>
+
+@{
+    ViewBag.Title = "Section Assignment";
+}
+
+<h2>Section Assignments</h2>
+<p>Showing each section this assignment is given</p>
+<p>
+    @Html.ActionLink("Assign to Another Section", "Assign", new { id = ViewBag.assignmentId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.assignmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sectionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gradingStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gradingEnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.assignment.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.section.dispShort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gradingStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gradingEnd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
