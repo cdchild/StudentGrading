@@ -1,0 +1,38 @@
+﻿@model StudentGrading.Models.Section
+<fieldset>
+    <legend>@Html.LabelFor(model => model.Registrations)</legend>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Registrations.First().user, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("userId", String.Empty)
+            @Html.ValidationMessageFor(model => model.Registrations.First().userId)
+            <input type="submit" value="Add" formaction="@Url.Action("AddExisting")" />
+        </div>
+    </div>
+
+    <dl>
+    @foreach (var item in Model.Registrations)
+    {
+        <dt>
+            @Html.DisplayNameFor(item => item.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(item => item.User.UserName)
+        </dd>
+        <dd>
+            <input type="submit" value="Remove" formaction="@Url.Action("Remove", new { id = item.id, i = item.SectionId })" />
+        </dd>
+        <div class="editor-label">
+            @Html.LabelFor(item => item.UserName, new { form = "form2" })
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(item => item.user.UserName)
+
+            
+        </div>
+    }
+
+    </dl>
+</fieldset>

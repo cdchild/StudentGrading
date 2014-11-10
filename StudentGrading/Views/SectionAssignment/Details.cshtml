@@ -1,0 +1,58 @@
+﻿@model StudentGrading.Models.SectionAssignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section Assignment</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.assignmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.assignment.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sectionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.section.dispShort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gradingStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gradingStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gradingEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gradingEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.assignmentId })
+</p>

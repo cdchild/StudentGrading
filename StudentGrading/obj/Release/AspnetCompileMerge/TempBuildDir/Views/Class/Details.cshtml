@@ -1,0 +1,107 @@
+﻿@model StudentGrading.Models.Section
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course.dispShort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.dispShort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dispShort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dispShort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.begin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.begin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end)
+        </dd>
+
+    </dl>
+
+</div>
+    <h4>Section Registrations</h4>
+    <hr />
+    <p>Current Registrations
+
+    <div class="col col-lg-offset-1">
+        <table class="table table-responsive table-condensed">
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.Registrations.First().roleId, new { @class = "control-label col-md-2" })
+                </th>
+                <th>
+                    @Html.LabelFor(model => model.Registrations.First().userId, new { @class = "control-label col-md-2" })
+                </th>
+                <th>@Html.LabelFor(model => model.Registrations.First().begin, new { @class = "control-label col-md-2" })</th>
+                <th>@Html.LabelFor(model => model.Registrations.First().end, new { @class = "control-label col-md-2" })</th>
+            </tr>
+        @if (Model.Registrations.Count > 0)
+        {
+            foreach (var item in Model.Registrations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(entry => item.role.Name, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.user.dispFull, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.begin, new { form = "form2" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(entry => item.end, new { form = "form2" })
+                    </td>
+
+                </tr>
+            }
+        }
+
+        </table>
+    </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

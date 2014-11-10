@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>UVU Student Grading</h1>
+    <p class="lead">Engaged Learning by reviewing, and receiving feedback quickly.</p>
+    <p><a href="http://www.uvu.edu" class="btn btn-primary btn-large">Return to UVU Home</a></p>
+</div>
+
+<div class="row">
+    @if (Request.GetOwinContext().Authentication.User.IsInRole(StudentGrading.Models.Role.Registrar.ToString()))
+    {
+        <div class="col-md-4">
+            <h2>Registration</h2>
+            <p>
+                First create the users that will be logging into the system.
+                Then create the class sections for the course and subject, then add each user to the section.
+            </p>
+        </div>
+    }
+    @if (Request.GetOwinContext().Authentication.User.IsInRole(StudentGrading.Models.Role.Professor.ToString()))
+    {
+        <div class="col-md-4">
+            <h2>Make Learning Possible</h2>
+            <p>
+                First create the assignment and rubric.
+                Next load in the assignment links.
+                Then when the specified date comes students can login and review.
+            </p>
+        </div>
+    }
+    @if (Request.GetOwinContext().Authentication.User.IsInRole(StudentGrading.Models.Role.Student.ToString()))
+    {
+        <div class="col-md-4">
+            <h2>Learn by Reviewing</h2>
+            <p>
+                Open your class to view assignments that need reviewing or to check out the reviews.
+                See what other students did and rate them.
+            </p>
+        </div>
+    }
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="col-md-4">
+            <h2>Welcome</h2>
+            <p>
+                Your login will be created by administration before you will have to review the first assignment...
+                Contact your professor or review your syllabus for more details about this site....
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Site/Project Reviewing</h2>
+            <p>
+                This site uses Microsoft ASP.NET at it's core, written in C#, using razor syntax for the views.
+                Some sample/test data is automatically added when the site is first built; however, as a part of the reviewing process you may do what you'd like using the site pages/forms.
+                Because this site was only constructed by one person in a limited amount of time the site is incomplete.
+            </p>
+            <p>
+                Regardless,  the project still demonstrates the abilities of the constructor to use such languages, frameworks, and concepts to create a neat site.
+                The site is complete and robust for any registrar using the system.
+                Any professor would find a site not quite ready, but overflowing with great potential.
+                Students would wonder how such a site would work, but like the intuitive design.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Testing Users</h2>
+            <hr />
+            <h4>Sally Registrarino</h4>
+            <ul>
+                <li>admin</li>
+                <li>testing123TESTING</li>
+            </ul>
+            <h4>Joe Professor</h4>
+            <ul>
+                <li>12345678</li>
+                <li>11223344mnop</li>
+            </ul>
+            <h4>John Student</h4>
+            <ul>
+                <li>12345655</li>
+                <li>11223344mnop</li>
+            </ul>
+        </div>
+
+    }
+</div>

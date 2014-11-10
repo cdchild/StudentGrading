@@ -1,0 +1,98 @@
+﻿@model StudentGrading.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>User</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRegistrar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsRegistrar)
+        </dd>
+
+    </dl>
+</div>
+    <h4>User Roles</h4>
+    <hr />
+    <div class="col col-lg-offset-1">
+        <table class="table table-responsive table-condensed">
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.UserRoles.FirstOrDefault().Role.Name, new { @class = "control-label col-md-2" })
+                </th>
+            </tr>
+        @if (Model.UserRoles.Count > 0)
+        {
+            foreach (var item in Model.UserRoles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(entry => item.Role.Name)
+                    </td>
+                </tr>
+            }
+            
+        }
+
+        </table>
+    </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

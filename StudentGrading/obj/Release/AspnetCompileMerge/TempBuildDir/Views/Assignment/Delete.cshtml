@@ -1,0 +1,97 @@
+﻿@model StudentGrading.Models.Assignment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Assignment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.dispShortWithTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owningUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owningUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptsPossible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptsPossible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rubricId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rubric.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.studentGraderVisible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.studentGraderVisible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.allowGraderOverride)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.allowGraderOverride)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.allowComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.allowComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,2 @@
+﻿@model Nullable<System.DateTime>
+@Html.TextBox("", (Model.HasValue ? Model.Value.ToShortTimeString() : string.Empty), new { @class = "timepicker", @type = "time" })

@@ -1,0 +1,91 @@
+﻿@model StudentGrading.Models.Assignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assignment</h4>
+	<hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.dispShortWithTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.owningUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.owningUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ptsPossible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ptsPossible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rubricId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rubric.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.studentGraderVisible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.studentGraderVisible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.allowGraderOverride)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.allowGraderOverride)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.allowComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.allowComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

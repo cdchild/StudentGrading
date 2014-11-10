@@ -1,0 +1,78 @@
+﻿@model StudentGrading.ViewModels.AddSectionViewModel
+
+@{
+    ViewBag.Title = "Create Class Section";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Section</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.courseId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("courseId", String.Empty)
+                @Html.ActionLink("Edit List", "Index", "Course")
+                @Html.ValidationMessageFor(model => model.courseId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.code)
+                @Html.ValidationMessageFor(model => model.code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.begin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.begin)
+                @Html.ValidationMessageFor(model => model.begin)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.end, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.end)
+                @Html.ValidationMessageFor(model => model.end)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("UserId", String.Empty)
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

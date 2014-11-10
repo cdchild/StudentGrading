@@ -1,0 +1,98 @@
+﻿@model StudentGrading.ViewModels.SectionAssignmentViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Section Assignment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.assignmentId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("assignmentId", String.Empty)
+                @Html.ValidationMessageFor(model => model.assignmentId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sectionId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("sectionId", String.Empty)
+                @Html.ValidationMessageFor(model => model.sectionId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dueDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dueDate)
+                @Html.ValidationMessageFor(model => model.dueDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dueTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dueTime)
+                @Html.ValidationMessageFor(model => model.dueTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingStart, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gradingStart)
+                @Html.ValidationMessageFor(model => model.gradingStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingStartTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gradingStartTime)
+                @Html.ValidationMessageFor(model => model.gradingStartTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingEnd, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gradingEnd)
+                @Html.ValidationMessageFor(model => model.gradingEnd)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gradingEndTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gradingEndTime)
+                @Html.ValidationMessageFor(model => model.gradingEndTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.assignmentId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
